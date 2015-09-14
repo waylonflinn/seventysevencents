@@ -61,16 +61,14 @@ h1 { font-size: 3rem; }
 
 /* Larger than tablet */
 @media (min-width: 750px) {
-	h1 { font-size: 5rem; }
-	.hero {
-		min-width: 750px;
-	}
+	h1 { font-size: 4rem; }
 }
 
 /* Larger than desktop */
 @media (min-width: 1000px) {
 	.hero {
 		padding-top: 10em;
+		min-width: 750px;
 	}
 	.footnote {
 		position: absolute;
@@ -80,7 +78,11 @@ h1 { font-size: 3rem; }
 }
 
 /* Larger than Desktop HD */
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+	h1{
+		font-size: 5rem;
+	}
+}
 
 .four.columns {
 	min-width: 250px;
