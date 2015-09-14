@@ -4,6 +4,7 @@ var window = require("global/window"),
 	document = require('global/document'),
 	hg = require('mercury'),
 	h = require('mercury').h;
+// https://github.com/trueadm/t7
 
 function nextStep(state){
 	console.log("clicked");
@@ -20,13 +21,54 @@ function App(){
 }
 
 
-App.render = function render(state){
+App.renderChart = function renderChart(state){
 
 	if(state.step === 0) {
-		return h("button", {'id': 'start', 'className' : 'button', 'ev-click': hg.send(state.channels.clicks)}, "Explore");
+		return h("div");
 	}
 	else if(state.step === 1){
 		return h("div", {'className' : 'chart'});
+	}
+	else {
+		return h("div");
+	}
+}
+/*
+
+[
+	h("strong", "SEVENTY"),
+	h("", "SEVEN"),
+	h("strong", "CENTS")
+]
+*/
+App.renderText = function renderText(state){
+
+	if(state.step === 0) {
+		return h("div", [
+			h("h1", {'id': 'title', 'className' : 'hero-heading'},
+			[
+				h("strong", "SEVENTY"),
+				h("span", "SEVEN"),
+				h("strong", "CENTS")
+			]),
+			h("p", ["Seventy seven cents on the dollar is a statistic frequently cited in support of a gender based wage gap in America. This site empowers you to explore the data",
+				h("sup", "1"),
+				" for yourself."]),
+			h("button", {'id': 'start', 'className' : 'button', 'ev-click': hg.send(state.channels.clicks)}, "Explore")
+		]);
+	}
+	else if(state.step === 1){
+		return h("div", [
+			h("h1", {'id': 'title', 'className' : 'hero-heading'},
+			[
+				h("strong", "SEVENTY"),
+				h("span", "SEVEN"),
+				h("strong", "CENTS")
+			]),
+			h("p", ["Seventy seven cents on the dollar is a statistic frequently cited in support of a gender based wage gap in America. This site empowers you to explore the data",
+				h("sup", "1"),
+				" for yourself."])
+		]);
 	}
 	else {
 		return "";
@@ -41,4 +83,5 @@ window.SSC.state = state;
 window.SSC.hg = hg;
 
 
-hg.app(document.body.querySelector("#chart-container"), state, App.render);
+hg.app(document.body.querySelector("#text-container"), state, App.renderText);
+hg.app(document.body.querySelector("#chart-container"), state, App.renderChart);

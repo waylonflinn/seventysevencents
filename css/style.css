@@ -4,15 +4,21 @@ html
   background: url(img/bg.jpg) no-repeat center center fixed;
   background-size: cover;
 */
+height: 100%;
 }
 body {
-	font-size: 1em;
+	font-size: 1.4em;
+	min-height: 100%;
+	margin: 0;
+	position: relative;
 }
 
 /* mobile first */
-h1 { font-size: 3rem; }
+h1 {
+	font-size: 3rem;
+}
 
-#chart-container{
+#chart-container {
 	height: 400px;
 	margin: 0 auto;
 }
@@ -24,18 +30,18 @@ h1 { font-size: 3rem; }
 }
 .hero {
 	min-width: 300px;
+	padding-bottom: 2em;
 }
 
 #start {
 	margin: 0 auto;
-	margin-top: 50%;
 	width: 200px;
 	display: block;
 }
 
 .footnote {
-	position: relative;
-	font-size: 1em;
+	position: absolute;
+	left:0; bottom: 0;
 	margin-top: 1em;
 }
 /* Larger than mobile */
@@ -61,7 +67,9 @@ h1 { font-size: 3rem; }
 
 /* Larger than tablet */
 @media (min-width: 750px) {
-	h1 { font-size: 4rem; }
+	h1 {
+		font-size: 4rem;
+	}
 }
 
 /* Larger than desktop */
@@ -69,11 +77,6 @@ h1 { font-size: 3rem; }
 	.hero {
 		padding-top: 10em;
 		min-width: 750px;
-	}
-	.footnote {
-		position: absolute;
-		bottom: 4px;
-		font-size: .75em;
 	}
 }
 
