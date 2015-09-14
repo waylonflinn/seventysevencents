@@ -1,0 +1,87 @@
+html
+{
+/*
+  background: url(img/bg.jpg) no-repeat center center fixed;
+  background-size: cover;
+*/
+}
+body {
+	font-size: 1em;
+}
+
+/* mobile first */
+h1 { font-size: 3rem; }
+
+#chart-container{
+	height: 400px;
+	margin: 0 auto;
+}
+.chart {
+	width: 250px;
+	background: #ddd;
+	height: 100%;
+	margin: 0 auto;
+}
+.hero {
+	min-width: 300px;
+}
+
+#start {
+	margin: 0 auto;
+	margin-top: 50%;
+	width: 200px;
+	display: block;
+}
+
+.footnote {
+	position: relative;
+	font-size: 1em;
+	margin-top: 1em;
+}
+/* Larger than mobile */
+@media (min-width: 400px) {
+	.hero {
+		min-width: 400px;
+	}
+}
+
+/* Larger than phablet */
+@media (min-width: 550px) {
+	body { font-size: 1.5em; }
+	.hero{
+		min-width: 550px;
+	}
+	.hero-heading{
+		margin-top: 100px;
+	}
+	.chart {
+		width: 300px;
+	}
+}
+
+/* Larger than tablet */
+@media (min-width: 750px) {
+	h1 { font-size: 5rem; }
+	.hero {
+		min-width: 750px;
+	}
+}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {
+	.hero {
+		padding-top: 10em;
+	}
+	.footnote {
+		position: absolute;
+		bottom: 4px;
+		font-size: .75em;
+	}
+}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {}
+
+.four.columns {
+	min-width: 250px;
+}

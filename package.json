@@ -1,0 +1,15 @@
+{
+  "name": "seventysevencents",
+  "version": "0.0.1",
+  "description": "is there a gender wage gap?",
+  "dependencies": {
+    "global": "^4.3.0",
+    "mercury": "^14.0.0"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "equality"
+  ],
+  "author": "Waylon Flinn",
+  "license": "MIT"
+}
