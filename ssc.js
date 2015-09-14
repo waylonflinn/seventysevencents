@@ -33,42 +33,27 @@ App.renderChart = function renderChart(state){
 		return h("div");
 	}
 }
-/*
 
-[
-	h("strong", "SEVENTY"),
-	h("", "SEVEN"),
-	h("strong", "CENTS")
-]
-*/
 App.renderText = function renderText(state){
 
+	var contents =  [
+		h("h1", {'id': 'title', 'className' : 'hero-heading'},
+		[
+			h("strong", "SEVENTY"),
+			h("span", "SEVEN"),
+			h("strong", "CENTS")
+		]),
+		h("p", ["Seventy seven cents on the dollar is a statistic frequently cited in support of a gender based wage gap in America. This site empowers you to explore the data",
+			h("sup", "1"),
+			" for yourself."])
+	];
+
 	if(state.step === 0) {
-		return h("div", [
-			h("h1", {'id': 'title', 'className' : 'hero-heading'},
-			[
-				h("strong", "SEVENTY"),
-				h("span", "SEVEN"),
-				h("strong", "CENTS")
-			]),
-			h("p", ["Seventy seven cents on the dollar is a statistic frequently cited in support of a gender based wage gap in America. This site empowers you to explore the data",
-				h("sup", "1"),
-				" for yourself."]),
-			h("button", {'id': 'start', 'className' : 'button', 'ev-click': hg.send(state.channels.clicks)}, "Explore")
-		]);
+		contents.push(h("button", {'id': 'start', 'className' : 'button', 'ev-click': hg.send(state.channels.clicks)}, "Explore"));
+		return h("div", contents);
 	}
 	else if(state.step === 1){
-		return h("div", [
-			h("h1", {'id': 'title', 'className' : 'hero-heading'},
-			[
-				h("strong", "SEVENTY"),
-				h("span", "SEVEN"),
-				h("strong", "CENTS")
-			]),
-			h("p", ["Seventy seven cents on the dollar is a statistic frequently cited in support of a gender based wage gap in America. This site empowers you to explore the data",
-				h("sup", "1"),
-				" for yourself."])
-		]);
+		return h("div", contents);
 	}
 	else {
 		return "";
