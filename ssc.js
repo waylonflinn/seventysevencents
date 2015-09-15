@@ -45,7 +45,7 @@ App.renderText = function renderText(state){
 			h("span", "SEVEN"),
 			h("strong", "CENTS")
 		]),
-		h("p", ["Seventy seven cents per dollar is frequently cited as the gender based wage gap in America. This site empowers you to explore the data",
+		h("p", ["Seventy seven cents per dollar is often cited as the gender based wage gap in America. This site empowers you to explore the data",
 			h("sup", "1"),
 			" for yourself."])
 	];
