@@ -3,12 +3,17 @@
 var window = require("global/window"),
 	document = require('global/document'),
 	hg = require('mercury'),
-	h = require('mercury').h;
+	h = require('mercury').h,
+	chart0 = require('./chart0.js');
 // https://github.com/trueadm/t7
 
+var chart = new chart0("#chart");
+
 function nextStep(state){
-	console.log("clicked");
 	state.step.set(state.step() + 1);
+	if(state.step() == 1){
+		chart.show();
+	}
 }
 
 function App(){
@@ -69,4 +74,4 @@ window.SSC.hg = hg;
 
 
 hg.app(document.body.querySelector("#text-container"), state, App.renderText);
-hg.app(document.body.querySelector("#chart-container"), state, App.renderChart);
+//hg.app(document.body.querySelector("#chart-container"), state, App.renderChart);

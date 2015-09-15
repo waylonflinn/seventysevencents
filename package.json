@@ -6,7 +6,9 @@
     "global": "^4.3.0",
     "mercury": "^14.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+      "minifyify" : "^7.0.6"
+  },
   "keywords": [
     "equality"
   ],
