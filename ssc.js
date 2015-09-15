@@ -11,9 +11,6 @@ var chart = new chart0("#chart");
 
 function nextStep(state){
 	state.step.set(state.step() + 1);
-	if(state.step() == 1){
-		chart.show();
-	}
 }
 
 function App(){
@@ -48,7 +45,7 @@ App.renderText = function renderText(state){
 			h("span", "SEVEN"),
 			h("strong", "CENTS")
 		]),
-		h("p", ["Seventy seven cents on the dollar is a statistic frequently cited in support of a gender based wage gap in America. This site empowers you to explore the data",
+		h("p", ["Seventy seven cents per dollar is frequently cited as the gender based wage gap in America. This site empowers you to explore the data",
 			h("sup", "1"),
 			" for yourself."])
 	];
@@ -75,3 +72,4 @@ window.SSC.hg = hg;
 
 hg.app(document.body.querySelector("#text-container"), state, App.renderText);
 //hg.app(document.body.querySelector("#chart-container"), state, App.renderChart);
+chart.show();
