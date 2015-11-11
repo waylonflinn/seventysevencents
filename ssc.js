@@ -7,6 +7,21 @@ var window = require("global/window"),
 	chart0 = require('./chart0.js');
 // https://github.com/trueadm/t7
 
+/* Regarding college major selection:
+ * http://www.ny.frb.org/research/economists/zafar/p1.pdf
+ * "Non-pecuniary
+ * outcomes explain about half of the choice behavior for males and more than three-fourths of the choice for
+ * females."
+ *
+ * "First, I find that gender differences in
+ * beliefs about ability constitute a small and insignicant part of the gap. This implies that explanations
+ * based entirely on the assumption that women have lower self-confidence relative to men (Long, 1986;
+ * Niederle and Vesterlund, 2007) can be rejected in my data."
+ */
+
+ /* async loading of scripts:
+  * http://www.html5rocks.com/en/tutorials/speed/script-loading/
+  */
 var chart = new chart0("#chart");
 
 function nextStep(state){
