@@ -59,6 +59,12 @@ Chart.prototype.show = function(){
 
 			// on end, start bar animation
 			self.bar.append("rect")
+					.on("mouseover", function(d) {
+					  d3.select(this).style("fill", "#508bB8");
+					})
+					.on("mouseout", function(d) {
+					  d3.select(this).style("fill", "#4682B4");
+					})
 					.attr("width", self.BAR_WIDTH)
 					.attr("y", self.MAX_HEIGHT)
 					.attr("height", 0)
