@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+	<style>
+		html {
+			/*
+		  background: url(img/presidential-dance.gif) no-repeat top center fixed;
+		  background-size: cover;
+		  */
+			height: 100%;
+		}
+		#chart{
+			display: block;
+			margin: 0 auto;
+			width: 250px;
+			height: 400px;
+		}
+
+		#chart rect{
+			fill: steelblue;
+		}
+		.axis text {
+		  font: 10px sans-serif;
+		}
+
+		.axis path,
+		.axis line {
+		  fill: none;
+		  stroke: #bbb;
+		  shape-rendering: crispEdges;
+		}
+
+		.initial {
+			height: 0;
+		}
+	</style>
+</head>
+<body>
+	<svg id="chart">
+	</svg>
+	<script>
+		var BAR_WIDTH = 30,
+			MAX_HEIGHT = 300,
+			MARGIN = 30,
+			OUTER_MARGIN = 50;
+
+		var data = [
+			{"label": "women", "value": 77 },
+			{"label": "men", "value": 100}
+		];
+
+		// scale
+		var y = d3.scale.linear()
+			.domain([0, d3.max(data, function(d){ return d.value; })])
+			.range([0, MAX_HEIGHT]),
+			x_min = d3.scale.ordinal()
+			.rangeRoundBands([0, 0], .1),
+			x = d3.scale.ordinal()
+			.rangeRoundBands([0, 2 * OUTER_MARGIN + 2 * BAR_WIDTH + MARGIN], .1);
+
+		// axis
+		var xAxis = d3.svg.axis()
+			.scale(x)
+			.orient("bottom")
+			.outerTickSize(0);
+		var xMinAxis = d3.svg.axis()
+			.scale(x_min)
+			.orient("bottom")
+			.outerTickSize(0);
+
+		var chart = d3.select("#chart");
+
+		var bar = chart.selectAll("g")
+				.data(data)
+			.enter().append("g")
+				.attr("transform", function(d, i){ return "translate(" + (OUTER_MARGIN + i * (BAR_WIDTH + MARGIN)) + "," + 0 + ")";  });
+
+		// start axis animation
+		chart.append("g")
+			.attr("class", "x axis")
+			.attr("transform", "translate(0," + MAX_HEIGHT + ")")
+			.call(xMinAxis)
+			.transition()
+			.duration(800)
+			.call(xAxis)
+			.each("end", function(){
+
+				// on end, start bar animation
+				bar.append("rect")
+						.on("mouseover", function(d) {
+						  d3.select(this).style("fill", "#508bB8");
+						})
+						.on("mouseout", function(d) {
+						  d3.select(this).style("fill", "#4682B4");
+						})
+						.attr("width", BAR_WIDTH)
+						.attr("y", MAX_HEIGHT)
+						.attr("height", 0)
+						.transition()
+						.attr("height", function(d){ return y(d.value); })
+						.attr("y", function(d){ return MAX_HEIGHT - y(d.value); })
+						.duration(1000);
+			});
+
+			/*
+			.each("end", function(){
+
+				chart.append("line")          // attach a line
+					.style("stroke", "#999")  // colour the line
+					.attr("x1", OUTER_MARGIN)     // x position of the first end of the line
+					.attr("y1", MAX_HEIGHT - y(data[0].value))      // y position of the first end of the line
+					.attr("x2", OUTER_MARGIN)     // x position of the second end of the line
+					.attr("y2", MAX_HEIGHT - y(data[0].value))
+					.transition()
+					.duration(800)
+					.attr("x1", 10);
+
+			});
+			*/
+
+
+
+	</script>
+</body>
+</html>
